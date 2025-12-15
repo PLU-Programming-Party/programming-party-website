@@ -1,0 +1,23 @@
+{
+  "name": "programming-party-website",
+  "version": "1.0.0",
+  "description": "Website for Programming Party - showcasing creative projects built by PLU students and alumni",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "dev": "eleventy --serve",
+    "deploy": "npm run build"
+  },
+  "keywords": [
+    "programming-party",
+    "plu",
+    "projects",
+    "community"
+  ],
+  "author": "Programming Party Community",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}Programming Party</title>
+    <meta name="description" content="A weekly gathering of PLU students and alumni building silly projects together">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">🎉 Programming Party</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/projects/" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/" class="nav-link">People</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about/" class="nav-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Programming Party. A PLU Community Project.</p>
+            <p>
+                <a href="https://github.com/PLU-Programming-Party">GitHub Organization</a> | 
+                <a href="mailto:caleyjb@plu.edu">Email Dr. Caley</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

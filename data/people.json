@@ -1,0 +1,38 @@
+[
+  {
+    "id": "jeff-caley",
+    "name": "Dr. Jeff Caley",
+    "role": "Professor of Computer Science, Pacific Lutheran University",
+    "bio": "Faculty advisor and mentor for Programming Party",
+    "graduationYear": null,
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "website": "mailto:caleyjb@plu.edu"
+    }
+  },
+  {
+    "id": "person-2",
+    "name": "Add Your Name",
+    "role": "Contributor",
+    "bio": "Add your bio here",
+    "graduationYear": "2026",
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "website": null
+    }
+  },
+  {
+    "id": "person-3",
+    "name": "Add Your Name",
+    "role": "Contributor",
+    "bio": "Add your bio here",
+    "graduationYear": "2025",
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "website": null
+    }
+  }
+]

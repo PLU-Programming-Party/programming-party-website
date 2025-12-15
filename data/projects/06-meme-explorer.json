@@ -1,0 +1,15 @@
+{
+  "id": "meme-explorer-2526",
+  "name": "Meme Vector Explorer",
+  "description": "Traverse the vector space of memes! Navigate between memes through nearest-neighbor connections in embedding space. A surreal journey through internet culture.",
+  "year": "2025-26",
+  "status": "InProgress",
+  "link": {
+    "repository": "https://github.com/plu-programming-party/meme-vector-explorer"
+  },
+  "image": "https://via.placeholder.com/400x250/ec4899/ffffff?text=Meme+Vector+Explorer",
+  "images": [],
+  "tags": ["ml", "embeddings", "memes", "vectors", "interactive"],
+  "team": [],
+  "featured": true
+}

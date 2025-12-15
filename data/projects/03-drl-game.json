@@ -1,0 +1,15 @@
+{
+  "id": "drl-game-2223",
+  "name": "Deep Reinforcement Learning Game",
+  "description": "An experimental game using deep reinforcement learning for AI behavior (learning project - did not reach completion).",
+  "year": "2022-23",
+  "status": "Failed",
+  "link": {
+    "repository": "https://github.com/plu-programming-party/drl-game"
+  },
+  "image": "https://via.placeholder.com/400x250/f59e0b/ffffff?text=Deep+RL+Game",
+  "images": [],
+  "tags": ["ml", "ai", "learning", "experiment"],
+  "team": [],
+  "featured": false
+}

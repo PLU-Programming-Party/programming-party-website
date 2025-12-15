@@ -1,0 +1,16 @@
+{
+  "id": "solar-flare-2324",
+  "name": "Solar Flare The Game",
+  "description": "An interactive retro-style game with a unique terminal-inspired interface.",
+  "year": "2023-24",
+  "status": "WebHosted",
+  "link": {
+    "demo": "https://plu-programming-party.github.io/Solar_Flare_The_Game/",
+    "repository": "https://github.com/plu-programming-party/Solar_Flare_The_Game"
+  },
+  "image": "https://via.placeholder.com/400x250/ec4899/ffffff?text=Solar+Flare",
+  "images": [],
+  "tags": ["game", "retro", "interactive"],
+  "team": [],
+  "featured": true
+}

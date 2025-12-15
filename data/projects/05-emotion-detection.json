@@ -1,0 +1,15 @@
+{
+  "id": "emotion-detection-2021",
+  "name": "Emotion Detection Game",
+  "description": "A webcam-based interactive game where players express emotions and the website uses a trained neural network to recognize facial emotions.",
+  "year": "2020-21",
+  "status": "RepoOnly",
+  "link": {
+    "repository": "https://github.com/plu-programming-party/emotion-detection-game"
+  },
+  "image": "https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Emotion+Detection",
+  "images": [],
+  "tags": ["game", "ml", "emotion", "webcam", "neural-network"],
+  "team": [],
+  "featured": false
+}

@@ -1,0 +1,61 @@
+---
+layout: project-list
+title: Projects
+permalink: /projects/
+templateEngine: njk
+---
+
+<div class="projects-container">
+    <div class="project-grid">
+        {% for project in collections.projects %}
+        <div class="project-card">
+            {% if project.image %}
+            <div class="project-image">
+                <img src="{{ project.image }}" alt="{{ project.name }}" loading="lazy">
+            </div>
+            {% endif %}
+            <h3>{{ project.name }}</h3>
+            <p class="project-year">{{ project.year }}</p>
+            <p class="project-description">{{ project.description }}</p>
+            <p class="project-status">
+                {% if project.status == "WebHosted" %}
+                <span class="status-badge status-hosted">🌐 Live Demo</span>
+                {% elif project.status == "RepoOnly" %}
+                <span class="status-badge status-repo">📦 Repo Only</span>
+                {% elif project.status == "InProgress" %}
+                <span class="status-badge status-progress">🔨 In Progress</span>
+                {% elif project.status == "Failed" %}
+                <span class="status-badge status-failed">📚 Learning</span>
+                {% endif %}
+            </p>
+            <div class="project-tags">
+                {% for tag in project.tags | slice(0, 3) %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <div class="project-links">
+                {% if project.link.demo %}
+                <a href="{{ project.link.demo }}" class="link-btn" target="_blank">Demo</a>
+                {% endif %}
+                {% if project.link.repository %}
+                <a href="{{ project.link.repository }}" class="link-btn" target="_blank">Repo</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    const rotation = Math.random() * 90 - 45; // Random between -45 and 45
+    const translateY = Math.random() * 10 + 8; // Random between 8 and 18
+    this.style.transform = `translateY(-${translateY}px) rotate(${rotation}deg)`;
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) rotate(0deg)';
+  });
+});
+</script>

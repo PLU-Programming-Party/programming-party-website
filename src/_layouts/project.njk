@@ -1,0 +1,20 @@
+---
+layout: base
+---
+
+<div class="project-detail">
+    <a href="/projects/" class="back-link">&larr; Back to Projects</a>
+    
+    <h1>{{ title }}</h1>
+    <p class="project-meta">{{ year }} | Status: {{ status }}</p>
+    
+    {{ content | safe }}
+
+    {% if link.demo %}
+    <p><a href="{{ link.demo }}" class="btn btn-primary" target="_blank">🎮 Play Demo</a></p>
+    {% endif %}
+
+    {% if link.repository %}
+    <p><a href="{{ link.repository }}" class="btn btn-secondary" target="_blank">📦 View Repository</a></p>
+    {% endif %}
+</div>

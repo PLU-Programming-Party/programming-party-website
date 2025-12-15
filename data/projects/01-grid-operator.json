@@ -1,0 +1,16 @@
+{
+  "id": "grid-operator-2425",
+  "name": "Grid Operator",
+  "description": "Strategic energy management game where you transition the world from fossil fuels to renewable energy while managing budget and public happiness.",
+  "year": "2024-25",
+  "status": "WebHosted",
+  "link": {
+    "demo": "https://plu-programming-party.github.io/grid-operator/",
+    "repository": "https://github.com/plu-programming-party/grid-operator"
+  },
+  "image": "https://via.placeholder.com/400x250/6366f1/ffffff?text=Grid+Operator",
+  "images": [],
+  "tags": ["game", "strategy", "energy", "environment"],
+  "team": [],
+  "featured": true
+}

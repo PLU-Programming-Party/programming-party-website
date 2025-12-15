@@ -1,0 +1,16 @@
+{
+  "id": "notedle-2122",
+  "name": "Notedle",
+  "description": "A Wordle-like game for music lovers! Guess musical notes and intervals. Perfect for musicians and music enthusiasts.",
+  "year": "2021-22",
+  "status": "WebHosted",
+  "link": {
+    "demo": "https://notedle.web.app",
+    "repository": "https://github.com/plu-programming-party/notedle"
+  },
+  "image": "https://via.placeholder.com/400x250/10b981/ffffff?text=Notedle",
+  "images": [],
+  "tags": ["game", "music", "wordle"],
+  "team": [],
+  "featured": true
+}
