@@ -29,73 +29,618 @@
     </nav>
 
     <main>
-        <div class="interview-prep-page">
-    <h1>Interview Prep</h1>
-<p><section class="prep-section">
-<h2>How to create and populate a 2-D array</h2></p>
-<p><div class="code-tabs">
-<div class="tab-buttons">
-<button class="tab-button active" data-tab="python">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="lang-icon">
-Python
-</button>
-<button class="tab-button" data-tab="java">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="lang-icon">
-Java
-</button>
-</div></p>
-<p><div class="tab-content">
-<div class="tab-pane active" id="python">
-<pre><code># Create a 2D array (3x3)
-rows, cols = 3, 3
-array = [[0 for j in range(cols)] for i in range(rows)]</p>
-<h1>Populate with values</h1>
-<p>for i in range(rows):
-for j in range(cols):
-array[i][j] = i * cols + j + 1</p>
-<h1>Alternative: Create and populate in one step</h1>
-<p>array = [[i * 3 + j + 1 for j in range(3)] for i in range(3)]</p>
-<h1>Print the array</h1>
-<p>for row in array:
-print(row)</code></pre>
-</div></p>
-<p><div class="tab-pane" id="java">
-<pre><code>// Create a 2D array (3x3)
-int rows = 3, cols = 3;
-int[][] array = new int[rows][cols];</p>
-<p>// Populate with values
+        <div class="about-page">
+    <h1>Interview Prep Resources</h1>
+<p><h2>Programming Fundamentals</h2>
+<p>
+Master the basics with our curated collection of common interview problems and solutions.
+Each problem includes multiple language implementations to help you understand different approaches.
+</p></p>
+<p><h2>Common Problems</h2></p>
+<p><h3>Problem: Populating a 2D Array</h3>
+<p>A classic problem that tests your understanding of nested loops and array indexing.</p></p>
+<p><h4>Assembly (x86-64)</h4>
+<pre><code>.section .data
+array: .space 400  # 10x10 array of 4-byte integers
+rows: .long 10
+cols: .long 10</p>
+<p>.section .text
+.global _start</p>
+<p>_start:
+xor %rax, %rax      # row counter
+xor %rbx, %rbx      # col counter
+mov $array, %rdi    # array base address</p>
+<p>row_loop:
+cmp $10, %rax
+jge end_program
+xor %rbx, %rbx      # reset column counter</p>
+<p>col_loop:
+cmp $10, %rbx
+jge next_row</p>
+<p># Calculate value: row * cols + col
+mov %rax, %rcx
+imul $10, %rcx
+add %rbx, %rcx</p>
+<p># Calculate address: base + (row * cols + col) * 4
+mov %rax, %rdx
+imul $40, %rdx      # row * cols * 4
+mov %rbx, %rsi
+imul $4, %rsi       # col * 4
+add %rsi, %rdx
+add %rdi, %rdx</p>
+<p># Store value
+mov %rcx, (%rdx)</p>
+<p>inc %rbx
+jmp col_loop</p>
+<p>next_row:
+inc %rax
+jmp row_loop</p>
+<p>end_program:
+mov $60, %rax       # sys_exit
+xor %rdi, %rdi
+syscall</code></pre></p>
+<p><h4>Fortran</h4>
+<pre><code>program populate_2d_array
+implicit none
+integer, parameter :: rows = 10, cols = 10
+integer :: array(rows, cols)
+integer :: i, j</p>
+<p>! Populate the array
+do i = 1, rows
+do j = 1, cols
+array(i, j) = (i-1) * cols + (j-1)
+end do
+end do</p>
+<p>! Print the array
+do i = 1, rows
+do j = 1, cols
+write(<em>, '(I4)', advance='no') array(i, j)
+end do
+write(</em>, *) ! New line
+end do
+end program populate_2d_array</code></pre></p>
+<p><h4>Java 8</h4>
+<pre><code>import java.util.Arrays;
+import java.util.stream.IntStream;</p>
+<p>public class Populate2DArray {
+public static void main(String[] args) {
+int rows = 10, cols = 10;</p>
+<p>// Traditional approach
+int[][] array = new int[rows][cols];
 for (int i = 0; i &lt; rows; i++) {
 for (int j = 0; j &lt; cols; j++) {
-array[i][j] = i * cols + j + 1;
+array[i][j] = i * cols + j;
 }
 }</p>
+<p>// Java 8 Stream approach
+int[][] streamArray = IntStream.range(0, rows)
+.mapToObj(i -&gt; IntStream.range(0, cols)
+.map(j -&gt; i * cols + j)
+.toArray())
+.toArray(int[][]::new);</p>
 <p>// Print the array
-for (int i = 0; i &lt; rows; i++) {
-for (int j = 0; j &lt; cols; j++) {
-System.out.print(array[i][j] + &quot; &quot;);
-}
+Arrays.stream(array)
+.forEach(row -&gt; {
+Arrays.stream(row)
+.forEach(val -&gt; System.out.printf(&quot;%4d&quot;, val));
 System.out.println();
-}</code></pre>
-</div>
-</div>
-</div>
-</section></p>
-</div>
-<script>
-document.querySelectorAll('.tab-button').forEach(button => {
-    button.addEventListener('click', function() {
-        const tabName = this.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and panes
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-        
-        // Add active class to clicked button and corresponding pane
-        this.classList.add('active');
-        document.getElementById(tabName).classList.add('active');
-    });
 });
-</script>
+}
+}</code></pre></p>
+<p><h4>Haskell</h4>
+<pre><code>-- Pure functional approach to populating a 2D array
+module Populate2D where</p>
+<p>-- Create a 2D list (array) with values
+populate2D :: Int -&gt; Int -&gt; [[Int]]
+populate2D rows cols =
+[[i * cols + j | j &lt;- [0..cols-1]] | i &lt;- [0..rows-1]]</p>
+<p>-- Alternative using explicit recursion
+populate2D' :: Int -&gt; Int -&gt; [[Int]]
+populate2D' rows cols = populateRows 0
+where
+populateRows r
+| r &gt;= rows = []
+| otherwise = populateRow r 0 : populateRows (r + 1)</p>
+<p>populateRow r c
+| c &gt;= cols = []
+| otherwise = (r * cols + c) : populateRow r (c + 1)</p>
+<p>-- Pretty print the 2D array
+printArray :: [[Int]] -&gt; IO ()
+printArray = mapM_ (putStrLn . unwords . map (printf &quot;%4d&quot;))
+where printf fmt n = take 4 (show n ++ repeat ' ')</p>
+<p>-- Main function
+main :: IO ()
+main = do
+let array = populate2D 10 10
+printArray array</code></pre></p>
+<p><h3>Problem: Traveling Salesman Problem</h3>
+<p>A classic optimization problem that demonstrates dynamic programming and graph algorithms. Here are polynomial-time approximation solutions.</p></p>
+<p><h4>Assembly (x86-64)</h4>
+<pre><code>; Nearest Neighbor TSP Approximation - O(n²)
+.section .data
+cities: .long 5                    # number of cities
+# Distance matrix (5x5) - symmetric
+distances: .long 0, 10, 15, 20, 25
+.long 10, 0, 35, 25, 30
+.long 15, 35, 0, 30, 20
+.long 20, 25, 30, 0, 15
+.long 25, 30, 20, 15, 0
+visited: .byte 0, 0, 0, 0, 0        # visited cities
+tour: .long 0, 0, 0, 0, 0, 0        # tour path (n+1 cities)
+total_cost: .long 0</p>
+<p>.section .text
+.global _start</p>
+<p>_start:
+# Initialize
+mov $0, %rax            # current city
+mov $0, %rbx            # tour index
+mov $tour, %rdi
+mov $0, (%rdi)          # start at city 0
+mov $visited, %rsi
+movb $1, (%rsi)         # mark city 0 as visited</p>
+<p>mov $1, %rbx            # next position in tour</p>
+<p>nearest_neighbor_loop:
+cmp $5, %rbx            # if we've visited all cities
+jge close_tour</p>
+<p># Find nearest unvisited city
+mov $-1, %rcx           # min_distance (use large value)
+mov $-1, %rdx           # nearest_city
+mov $0, %r8             # candidate city</p>
+<p>find_nearest:
+cmp $5, %r8
+jge found_nearest</p>
+<p># Check if city is visited
+mov $visited, %rsi
+add %r8, %rsi
+cmpb $0, (%rsi)
+jne next_candidate</p>
+<p># Calculate distance from current city to candidate
+mov %rax, %r9           # current city
+imul $20, %r9           # row offset (5 cities * 4 bytes)
+mov %r8, %r10           # candidate city
+imul $4, %r10           # column offset
+add %r10, %r9
+mov $distances, %rsi
+add %r9, %rsi
+mov (%rsi), %r11        # distance</p>
+<p># Update minimum if this is better
+cmp %rcx, %r11
+jge next_candidate
+mov %r11, %rcx          # new min_distance
+mov %r8, %rdx           # new nearest_city</p>
+<p>next_candidate:
+inc %r8
+jmp find_nearest</p>
+<p>found_nearest:
+# Add nearest city to tour
+mov $tour, %rdi
+mov %rbx, %r8
+imul $4, %r8
+add %r8, %rdi
+mov %rdx, (%rdi)        # store nearest city</p>
+<p># Mark city as visited
+mov $visited, %rsi
+add %rdx, %rsi
+movb $1, (%rsi)</p>
+<p># Add distance to total cost
+add %rcx, total_cost</p>
+<p># Update current city and tour position
+mov %rdx, %rax
+inc %rbx
+jmp nearest_neighbor_loop</p>
+<p>close_tour:
+# Add return to start city
+mov $tour, %rdi
+mov $5, %r8
+imul $4, %r8
+add %r8, %rdi
+mov $0, (%rdi)</p>
+<p># Add final distance
+mov %rax, %r9
+imul $20, %r9
+mov $distances, %rsi
+add %r9, %rsi
+mov (%rsi), %r11
+add %r11, total_cost</p>
+<p># Exit
+mov $60, %rax
+xor %rdi, %rdi
+syscall</code></pre></p>
+<p><h4>Fortran</h4>
+<pre><code>program tsp_nearest_neighbor
+implicit none
+integer, parameter :: n = 5
+integer :: distances(n, n)
+logical :: visited(n)
+integer :: tour(n+1)
+integer :: current_city, next_city, tour_pos
+integer :: min_distance, total_cost
+integer :: i, j</p>
+<p>! Initialize distance matrix
+data distances / 0, 10, 15, 20, 25, &amp;
+10,  0, 35, 25, 30, &amp;
+15, 35,  0, 30, 20, &amp;
+20, 25, 30,  0, 15, &amp;
+25, 30, 20, 15,  0 /</p>
+<p>! Initialize
+visited = .false.
+current_city = 1  ! Start at city 1 (1-indexed)
+tour(1) = current_city
+visited(current_city) = .true.
+total_cost = 0
+tour_pos = 2</p>
+<p>! Nearest neighbor algorithm - O(n²)
+do while (tour_pos &lt;= n)
+min_distance = huge(min_distance)
+next_city = -1</p>
+<p>! Find nearest unvisited city
+do i = 1, n
+if (.not. visited(i) .and. &amp;
+distances(current_city, i) &lt; min_distance) then
+min_distance = distances(current_city, i)
+next_city = i
+end if
+end do</p>
+<p>! Add to tour
+tour(tour_pos) = next_city
+visited(next_city) = .true.
+total_cost = total_cost + min_distance
+current_city = next_city
+tour_pos = tour_pos + 1
+end do</p>
+<p>! Close the tour
+tour(n+1) = tour(1)
+total_cost = total_cost + distances(current_city, tour(1))</p>
+<p>! Output results
+write(<em>, '(A)') 'TSP Nearest Neighbor Solution (O(n²)):'
+write(</em>, '(A)', advance='no') 'Tour: '
+do i = 1, n+1
+write(<em>, '(I0)', advance='no') tour(i)
+if (i &lt; n+1) write(</em>, '(A)', advance='no') ' -&gt; '
+end do
+write(*, <em>)
+write(</em>, '(A, I0)') 'Total cost: ', total_cost
+end program tsp_nearest_neighbor</code></pre></p>
+<p><h4>Java 8</h4>
+<pre><code>import java.util.<em>;
+import java.util.stream.</em>;</p>
+<p>public class TSPSolver {
+private final int n;
+private final int[][] distances;</p>
+<p>public TSPSolver(int[][] distances) {
+this.n = distances.length;
+this.distances = distances;
+}</p>
+<p>// Nearest Neighbor Approximation - O(n²)
+public TSPResult nearestNeighborTSP() {
+boolean[] visited = new boolean[n];
+List<Integer> tour = new ArrayList&lt;&gt;();
+int currentCity = 0;
+int totalCost = 0;</p>
+<p>tour.add(currentCity);
+visited[currentCity] = true;</p>
+<p>for (int step = 1; step &lt; n; step++) {
+final int current = currentCity;</p>
+<p>// Find nearest unvisited city using streams
+OptionalInt nearestOpt = IntStream.range(0, n)
+.filter(city -&gt; !visited[city])
+.reduce((city1, city2) -&gt;
+distances[current][city1] &lt;= distances[current][city2] ?
+city1 : city2);</p>
+<p>if (nearestOpt.isPresent()) {
+int nearest = nearestOpt.getAsInt();
+tour.add(nearest);
+visited[nearest] = true;
+totalCost += distances[currentCity][nearest];
+currentCity = nearest;
+}
+}</p>
+<p>// Close the tour
+tour.add(tour.get(0));
+totalCost += distances[currentCity][tour.get(0)];</p>
+<p>return new TSPResult(tour, totalCost);
+}</p>
+<p>// Christofides Algorithm Approximation - O(n³)
+public TSPResult christofidesTSP() {
+// 1. Find Minimum Spanning Tree
+List<Edge> mst = findMST();</p>
+<p>// 2. Find odd-degree vertices
+Set<Integer> oddVertices = findOddDegreeVertices(mst);</p>
+<p>// 3. Find minimum weight perfect matching (simplified)
+List<Edge> matching = findMinimumMatching(oddVertices);</p>
+<p>// 4. Combine MST and matching to form Eulerian graph
+List<Edge> eulerianGraph = new ArrayList&lt;&gt;(mst);
+eulerianGraph.addAll(matching);</p>
+<p>// 5. Find Eulerian tour and convert to Hamiltonian
+List<Integer> tour = findHamiltonianTour(eulerianGraph);
+int totalCost = calculateTourCost(tour);</p>
+<p>return new TSPResult(tour, totalCost);
+}</p>
+<p>private List<Edge> findMST() {
+// Prim's algorithm for MST
+boolean[] inMST = new boolean[n];
+List<Edge> mst = new ArrayList&lt;&gt;();
+PriorityQueue<Edge> pq = new PriorityQueue&lt;&gt;(Comparator.comparingInt(e -&gt; e.weight));</p>
+<p>inMST[0] = true;
+for (int j = 1; j &lt; n; j++) {
+pq.offer(new Edge(0, j, distances[0][j]));
+}</p>
+<p>while (!pq.isEmpty() &amp;&amp; mst.size() &lt; n - 1) {
+Edge edge = pq.poll();
+if (inMST[edge.to]) continue;</p>
+<p>mst.add(edge);
+inMST[edge.to] = true;</p>
+<p>for (int k = 0; k &lt; n; k++) {
+if (!inMST[k]) {
+pq.offer(new Edge(edge.to, k, distances[edge.to][k]));
+}
+}
+}</p>
+<p>return mst;
+}</p>
+<p>private Set<Integer> findOddDegreeVertices(List<Edge> mst) {
+int[] degree = new int[n];
+for (Edge edge : mst) {
+degree[edge.from]++;
+degree[edge.to]++;
+}</p>
+<p>return IntStream.range(0, n)
+.filter(i -&gt; degree[i] % 2 == 1)
+.boxed()
+.collect(Collectors.toSet());
+}</p>
+<p>private List<Edge> findMinimumMatching(Set<Integer> oddVertices) {
+// Simplified greedy matching
+List<Integer> vertices = new ArrayList&lt;&gt;(oddVertices);
+List<Edge> matching = new ArrayList&lt;&gt;();
+boolean[] used = new boolean[vertices.size()];</p>
+<p>for (int i = 0; i &lt; vertices.size(); i++) {
+if (used[i]) continue;</p>
+<p>int bestJ = -1;
+int bestCost = Integer.MAX_VALUE;</p>
+<p>for (int j = i + 1; j &lt; vertices.size(); j++) {
+if (!used[j] &amp;&amp; distances[vertices.get(i)][vertices.get(j)] &lt; bestCost) {
+bestCost = distances[vertices.get(i)][vertices.get(j)];
+bestJ = j;
+}
+}</p>
+<p>if (bestJ != -1) {
+matching.add(new Edge(vertices.get(i), vertices.get(bestJ), bestCost));
+used[i] = used[bestJ] = true;
+}
+}</p>
+<p>return matching;
+}</p>
+<p>private List<Integer> findHamiltonianTour(List<Edge> eulerianGraph) {
+// Build adjacency list
+Map&lt;Integer, List<Integer>&gt; adj = new HashMap&lt;&gt;();
+for (int i = 0; i &lt; n; i++) {
+adj.put(i, new ArrayList&lt;&gt;());
+}</p>
+<p>for (Edge edge : eulerianGraph) {
+adj.get(edge.from).add(edge.to);
+adj.get(edge.to).add(edge.from);
+}</p>
+<p>// DFS to create Hamiltonian tour
+boolean[] visited = new boolean[n];
+List<Integer> tour = new ArrayList&lt;&gt;();
+dfsHamiltonian(0, adj, visited, tour);
+tour.add(0); // Close the tour</p>
+<p>return tour;
+}</p>
+<p>private void dfsHamiltonian(int node, Map&lt;Integer, List<Integer>&gt; adj,
+boolean[] visited, List<Integer> tour) {
+if (!visited[node]) {
+visited[node] = true;
+tour.add(node);</p>
+<p>for (int neighbor : adj.get(node)) {
+dfsHamiltonian(neighbor, adj, visited, tour);
+}
+}
+}</p>
+<p>private int calculateTourCost(List<Integer> tour) {
+int cost = 0;
+for (int i = 0; i &lt; tour.size() - 1; i++) {
+cost += distances[tour.get(i)][tour.get(i + 1)];
+}
+return cost;
+}</p>
+<p>public static void main(String[] args) {
+int[][] distances = {
+{0, 10, 15, 20, 25},
+{10, 0, 35, 25, 30},
+{15, 35, 0, 30, 20},
+{20, 25, 30, 0, 15},
+{25, 30, 20, 15, 0}
+};</p>
+<p>TSPSolver solver = new TSPSolver(distances);</p>
+<p>// Nearest Neighbor (O(n²))
+TSPResult nnResult = solver.nearestNeighborTSP();
+System.out.println(&quot;Nearest Neighbor Result: &quot; + nnResult);</p>
+<p>// Christofides Algorithm (O(n³))
+TSPResult christResult = solver.christofidesTSP();
+System.out.println(&quot;Christofides Result: &quot; + christResult);
+}</p>
+<p>static class Edge {
+int from, to, weight;
+Edge(int from, int to, int weight) {
+this.from = from; this.to = to; this.weight = weight;
+}
+}</p>
+<p>static class TSPResult {
+List<Integer> tour;
+int cost;</p>
+<p>TSPResult(List<Integer> tour, int cost) {
+this.tour = tour; this.cost = cost;
+}</p>
+<p>@Override
+public String toString() {
+return String.format(&quot;Tour: %s, Cost: %d&quot;,
+tour.stream().map(String::valueOf).collect(Collectors.joining(&quot; -&gt; &quot;)), cost);
+}
+}
+}</code></pre></p>
+<p><h4>Haskell</h4>
+<pre><code>-- TSP Approximation Algorithms in Haskell
+module TSPSolver where</p>
+<p>import Data.List (minimumBy, delete, permutations)
+import Data.Ord (comparing)
+import qualified Data.Set as Set
+import Data.Array</p>
+<p>type City = Int
+type Distance = Int
+type Tour = [City]
+type DistanceMatrix = Array (City, City) Distance</p>
+<p>-- Sample distance matrix
+sampleDistances :: DistanceMatrix
+sampleDistances = array ((0,0), (4,4)) [
+((i,j), dist) |
+(i, row) &lt;- zip [0..] [[0,10,15,20,25], [10,0,35,25,30],
+[15,35,0,30,20], [20,25,30,0,15], [25,30,20,15,0]],
+(j, dist) &lt;- zip [0..] row
+]</p>
+<p>-- Nearest Neighbor TSP - O(n²)
+nearestNeighborTSP :: DistanceMatrix -&gt; Int -&gt; (Tour, Distance)
+nearestNeighborTSP distMatrix startCity =
+let (_, (maxRow, <em>)) = bounds distMatrix
+cities = [0..maxRow]
+initialState = (Set.singleton startCity, [startCity], 0)
+in nearestNeighborHelper distMatrix cities initialState
+where
+nearestNeighborHelper :: DistanceMatrix -&gt; [City] -&gt; (Set.Set City, Tour, Distance) -&gt; (Tour, Distance)
+nearestNeighborHelper dm allCities (visited, tour@(current:</em>), totalDist)
+| Set.size visited == length allCities =
+let returnDist = dm ! (current, startCity)
+in (reverse (startCity : tour), totalDist + returnDist)
+| otherwise =
+let unvisited = filter (<code>Set.notMember</code> visited) allCities
+(nextCity, minDist) = minimumBy (comparing snd)
+[(city, dm ! (current, city)) | city &lt;- unvisited]
+newVisited = Set.insert nextCity visited
+newTour = nextCity : tour
+newDist = totalDist + minDist
+in nearestNeighborHelper dm allCities (newVisited, newTour, newDist)</p>
+<p>-- Christofides Algorithm approximation - O(n³)
+christofidesTSP :: DistanceMatrix -&gt; (Tour, Distance)
+christofidesTSP distMatrix =
+let (_, (n, _)) = bounds distMatrix
+cities = [0..n]
+mst = primMST distMatrix cities
+oddVertices = findOddDegreeVertices mst cities
+matching = minimumWeightMatching distMatrix oddVertices
+eulerianGraph = mst ++ matching
+eulerianTour = findEulerianTour eulerianGraph cities
+hamiltonianTour = shortcutEulerianTour eulerianTour
+tourCost = calculateTourCost distMatrix hamiltonianTour
+in (hamiltonianTour, tourCost)</p>
+<p>-- Prim's MST algorithm
+primMST :: DistanceMatrix -&gt; [City] -&gt; [(City, City, Distance)]
+primMST distMatrix cities@(start:<em>) = primHelper [start] (delete start cities) []
+where
+primHelper inMST remaining mstEdges
+| null remaining = mstEdges
+| otherwise =
+let edges = [(u, v, distMatrix ! (u, v)) | u &lt;- inMST, v &lt;- remaining]
+(minU, minV, minWeight) = minimumBy (comparing ((</em>,_,w) -&gt; w)) edges
+newInMST = minV : inMST
+newRemaining = delete minV remaining
+newMSTEdges = (minU, minV, minWeight) : mstEdges
+in primHelper newInMST newRemaining newMSTEdges</p>
+<p>-- Find vertices with odd degree in MST
+findOddDegreeVertices :: [(City, City, Distance)] -&gt; [City] -&gt; [City]
+findOddDegreeVertices edges cities =
+let degrees = [length [() | (u, v, _) &lt;- edges, u == c || v == c] | c &lt;- cities]
+in [c | (c, d) &lt;- zip cities degrees, odd d]</p>
+<p>-- Simplified minimum weight matching for odd vertices
+minimumWeightMatching :: DistanceMatrix -&gt; [City] -&gt; [(City, City, Distance)]
+minimumWeightMatching distMatrix oddVertices = greedyMatching oddVertices []
+where
+greedyMatching [] matching = matching
+greedyMatching [_] matching = matching  -- Odd number of vertices
+greedyMatching (u:remaining) matching =
+let (bestV, bestWeight) = minimumBy (comparing snd)
+[(v, distMatrix ! (u, v)) | v &lt;- remaining]
+newRemaining = delete bestV remaining
+newMatching = (u, bestV, bestWeight) : matching
+in greedyMatching newRemaining newMatching</p>
+<p>-- Find Eulerian tour (simplified - assume graph is Eulerian)
+findEulerianTour :: [(City, City, Distance)] -&gt; [City] -&gt; [City]
+findEulerianTour edges cities =
+let adjList = [(c, [v | (u, v, _) &lt;- edges, u == c] ++
+[u | (u, v, _) &lt;- edges, v == c]) | c &lt;- cities]
+startCity = head cities
+in eulerianDFS startCity adjList []
+where
+eulerianDFS current adjList visited
+| current <code>elem</code> visited = [current]
+| otherwise =
+let neighbors = maybe [] id (lookup current adjList)
+newVisited = current : visited
+in current : concatMap (\n -&gt; eulerianDFS n adjList newVisited) neighbors</p>
+<p>-- Convert Eulerian tour to Hamiltonian by skipping repeated vertices
+shortcutEulerianTour :: [City] -&gt; [City]
+shortcutEulerianTour tour = shortcut tour Set.empty []
+where
+shortcut [] _ result = reverse result
+shortcut (c:cs) visited result
+| c <code>Set.member</code> visited = shortcut cs visited result
+| otherwise = shortcut cs (Set.insert c visited) (c : result)</p>
+<p>-- Calculate total tour cost
+calculateTourCost :: DistanceMatrix -&gt; [City] -&gt; Distance
+calculateTourCost distMatrix tour =
+let tourWithReturn = tour ++ [head tour]
+pairs = zip tourWithReturn (tail tourWithReturn)
+in sum [distMatrix ! (u, v) | (u, v) &lt;- pairs]</p>
+<p>-- Dynamic Programming TSP for small instances - O(n² * 2^n)
+dpTSP :: DistanceMatrix -&gt; (Tour, Distance)
+dpTSP distMatrix =
+let (_, (n, _)) = bounds distMatrix
+cities = [0..n]
+numCities = length cities
+startCity = 0
+in if numCities &lt;= 10  -- Only use DP for small instances
+then dpTSPHelper distMatrix cities startCity
+else christofidesTSP distMatrix  -- Fall back to approximation
+where
+dpTSPHelper dm cities start =
+-- For demonstration, use brute force for very small instances
+let allTours = [start : perm ++ [start] | perm &lt;- permutations (delete start cities)]
+tourCosts = [(tour, calculateTourCost dm tour) | tour &lt;- allTours]
+in minimumBy (comparing snd) tourCosts</p>
+<p>-- Main demonstration
+main :: IO ()
+main = do
+let (nnTour, nnCost) = nearestNeighborTSP sampleDistances 0
+let (cTour, cCost) = christofidesTSP sampleDistances</p>
+<p>putStrLn &quot;TSP Solutions:&quot;
+putStrLn $ &quot;Nearest Neighbor (O(n²)): &quot; ++ show nnTour ++ &quot;, Cost: &quot; ++ show nnCost
+putStrLn $ &quot;Christofides (O(n³)): &quot; ++ show cTour ++ &quot;, Cost: &quot; ++ show cCost</p>
+<p>-- For polynomial time complexity analysis:
+putStrLn &quot;\nComplexity Analysis:&quot;
+putStrLn &quot;- Nearest Neighbor: O(n²) - Greedy approximation&quot;
+putStrLn &quot;- Christofides: O(n³) - 1.5-approximation algorithm&quot;
+putStrLn &quot;- Note: Exact TSP is NP-hard, these are polynomial approximations&quot;</code></pre></p>
+<p><p><strong>Note:</strong> The Traveling Salesman Problem is NP-hard, so there's no known polynomial-time algorithm that finds the optimal solution. However, these implementations provide polynomial-time approximation algorithms:</p></p>
+<p><ul>
+<li><strong>Nearest Neighbor:</strong> O(n²) greedy approximation</li>
+<li><strong>Christofides Algorithm:</strong> O(n³) approximation with 1.5× optimal guarantee</li>
+<li><strong>Dynamic Programming:</strong> O(n²2ⁿ) for exact solutions (exponential, but shown for completeness)</li>
+</ul></p>
+<p><p>These approximation algorithms run in polynomial time and provide reasonably good solutions for practical purposes.</p></p>
+<p><h2>Practice Resources</h2>
+<p>
+<strong>Recommended Practice:</strong>
+</p>
+<ul>
+<li><a href="https://leetcode.com/">LeetCode</a> - Comprehensive problem set</li>
+<li><a href="https://www.hackerrank.com/">HackerRank</a> - Interview preparation tracks</li>
+<li><a href="https://www.codewars.com/">Codewars</a> - Coding challenges</li>
+<li><a href="https://github.com/PLU-Programming-Party">Programming Party GitHub</a> - Real project examples</li>
+</ul></p>
+<p><div style="margin-top: 3rem; text-align: center;">
+<a href="/programming-party-website/" class="btn btn-primary">← Back to Home</a>
+</div></p>
+</div>
     </main>
 
     <footer class="footer">
