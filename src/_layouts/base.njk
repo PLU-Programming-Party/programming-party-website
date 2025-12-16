@@ -22,9 +22,6 @@
                     <a href="{{ '/people/' | url }}" class="nav-link">People</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ '/interview-prep/' | url }}" class="nav-link">Interview Prep</a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ '/about/' | url }}" class="nav-link">About</a>
                 </li>
             </ul>
@@ -44,5 +41,77 @@
             </p>
         </div>
     </footer>
+
+    <!-- Easter Egg Modal -->
+    <div id="easter-egg" class="easter-egg">
+        <div class="close-easter-egg" onclick="closeEasterEgg()">×</div>
+        <div class="easter-egg-content">
+            <h1>🎊 SECRET PARTY MODE! 🎊</h1>
+            <p>Congratulations! You found the hidden Konami Code easter egg!</p>
+            <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Party celebration" class="party-gif" width="300">
+            <p>You are now officially a Programming Party legend! 🏆</p>
+            <p><em>"In a world of code, be the party."</em> - Ancient Programming Proverb</p>
+        </div>
+    </div>
+
+    <!-- Subtle Konami Hint -->
+    <div class="konami-hint">↑↑↓↓←→←→BA</div>
+
+    <script>
+    // Konami Code Easter Egg
+    let konamiCode = [];
+    const konamiSequence = [
+        'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+        'KeyB', 'KeyA'
+    ];
+
+    document.addEventListener('keydown', function(e) {
+        konamiCode.push(e.code);
+        
+        // Keep only the last 10 key presses
+        if (konamiCode.length > konamiSequence.length) {
+            konamiCode.shift();
+        }
+        
+        // Check if sequence matches
+        if (konamiCode.length === konamiSequence.length && 
+            konamiCode.every((key, index) => key === konamiSequence[index])) {
+            showEasterEgg();
+            konamiCode = []; // Reset
+        }
+    });
+
+    function showEasterEgg() {
+        const easterEgg = document.getElementById('easter-egg');
+        easterEgg.classList.add('show');
+        
+        // Add some party effects
+        document.body.style.filter = 'hue-rotate(0deg)';
+        let hue = 0;
+        const partyInterval = setInterval(() => {
+            hue += 10;
+            document.body.style.filter = `hue-rotate(${hue}deg)`;
+        }, 100);
+        
+        setTimeout(() => {
+            clearInterval(partyInterval);
+            document.body.style.filter = 'none';
+        }, 5000);
+    }
+
+    function closeEasterEgg() {
+        const easterEgg = document.getElementById('easter-egg');
+        easterEgg.classList.remove('show');
+        document.body.style.filter = 'none';
+    }
+
+    // Close on click outside
+    document.getElementById('easter-egg').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeEasterEgg();
+        }
+    });
+    </script>
 </body>
 </html>
