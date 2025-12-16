@@ -16,7 +16,13 @@ templateEngine: njk
     <div class="people-grid">
         {% for person in people %}
         <div class="person-card">
-            <div class="person-avatar">{{ person.name.charAt(0) }}</div>
+            <div class="person-avatar">
+                {% if person.image %}
+                <img src="{{ person.image }}" alt="{{ person.name }}">
+                {% else %}
+                {{ person.name.charAt(0) }}
+                {% endif %}
+            </div>
             <h3>{{ person.name }}</h3>
             <p class="person-role">{{ person.role }}</p>
             {% if person.graduationYear %}
