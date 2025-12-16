@@ -1,38 +1,15 @@
 [
   {
-    "id": "jeff-caley",
-    "name": "Dr. Jeff Caley",
-    "role": "Professor of Computer Science, Pacific Lutheran University",
-    "bio": "Faculty advisor and mentor for Programming Party",
+    "id": "allan-the-destroyer",
+    "name": "L. Allan Belton",
+    "role": "President at PLU",
+    "bio": "Inspiration",
     "graduationYear": null,
     "links": {
       "linkedin": null,
       "github": null,
-      "website": "mailto:caleyjb@plu.edu"
-    }
-  },
-  {
-    "id": "person-2",
-    "name": "Add Your Name",
-    "role": "Contributor",
-    "bio": "Add your bio here",
-    "graduationYear": "2026",
-    "links": {
-      "linkedin": null,
-      "github": null,
       "website": null
-    }
-  },
-  {
-    "id": "person-3",
-    "name": "Add Your Name",
-    "role": "Contributor",
-    "bio": "Add your bio here",
-    "graduationYear": "2025",
-    "links": {
-      "linkedin": null,
-      "github": null,
-      "website": null
-    }
+    },
+    "image": "https://www.plu.edu/resolute/spring-2019/wp-content/uploads/sites/31/2018/05/allan-belton-wall-1170x658.jpg"
   }
 ]
