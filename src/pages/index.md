@@ -29,6 +29,9 @@ permalink: /
         <strong>Our Mission</strong>: Celebrate collaborative creativity, learn together, and have fun building things that don't have to be practical to be amazing.
     </p>
     <p style="text-align: center; margin-top: 2rem;">
+        <a href="{{ '/interview-prep/' | url }}" class="btn btn-primary">Interview Prep</a>
+    </p>
+    <p style="text-align: center; margin-top: 2rem;">
         <a href="https://youtu.be/dQw4w9WgXcQ?si=Antry_QNgTHT_jGW" target="_blank" class="btn btn-primary">Important Information</a>
     </p>
 </section>
