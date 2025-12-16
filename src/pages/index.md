@@ -60,3 +60,4 @@ permalink: /
     <p>Programming Party meets weekly during the school year. All skill levels welcome!</p>
     <p><a href="mailto:caleyjb@plu.edu" style="color: white; font-weight: 600; text-decoration: underline;">Email Dr. Caley</a> to get involved, or check out our <a href="https://github.com/PLU-Programming-Party" style="color: white; font-weight: 600; text-decoration: underline;">GitHub organization</a>.</p>
 </section>
+
