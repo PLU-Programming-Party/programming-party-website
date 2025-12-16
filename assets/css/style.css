@@ -714,3 +714,95 @@ section h2 {
 .about-page strong {
   color: var(--pantone-448c);
 }
+
+/* ===== Interview Prep Page ===== */
+.interview-prep-page {
+  color: var(--pantone-448c);
+}
+
+.interview-prep-page h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--pantone-448c);
+}
+
+.prep-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.code-tabs {
+  margin-top: 2rem;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--pantone-448c);
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  font-size: 0.95em;
+}
+
+.tab-button:hover {
+  background-color: #f3f4f6;
+}
+
+.tab-button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background-color: #fef7f0;
+}
+
+.lang-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tab-content {
+  position: relative;
+}
+
+.tab-pane {
+  display: none;
+  margin-top: 1rem;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.tab-pane pre {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tab-pane code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-family: inherit;
+}
