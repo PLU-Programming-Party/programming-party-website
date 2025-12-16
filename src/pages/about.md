@@ -34,4 +34,8 @@ permalink: /about/
         there's a place for you. Email Dr. Caley at <a href="mailto:caleyjb@plu.edu">caleyjb@plu.edu</a> to get involved, 
         or check out our <a href="https://github.com/PLU-Programming-Party">GitHub organization</a> to see our projects.
     </p>
+    
+    <div style="margin-top: 3rem; text-align: center;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eRXE8Aebp7s?t=273" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 0.5rem;"></iframe>
+    </div>
 </div>
