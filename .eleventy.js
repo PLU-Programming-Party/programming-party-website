@@ -42,6 +42,7 @@ module.exports = function(eleventyConfig) {
 
   // Configuration
   return {
+    pathPrefix: "/programming-party-website/",
     dir: {
       input: "src",
       output: "_site",

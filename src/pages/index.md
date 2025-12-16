@@ -51,7 +51,7 @@ permalink: /
         {% endfor %}
     </div>
     <p class="view-all">
-        <a href="/projects/" class="btn btn-primary">View All Projects →</a>
+        <a href="{{ '/projects/' | url }}" class="btn btn-primary">View All Projects →</a>
     </p>
 </section>
 
