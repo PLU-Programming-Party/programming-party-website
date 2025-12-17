@@ -165,6 +165,7 @@ or check out our <a href="https://github.com/PLU-Programming-Party">GitHub organ
             
             if (shape === 'triangle') {
                 confetti.style.borderBottomColor = confetti.style.backgroundColor;
+                confetti.style.backgroundColor = 'transparent';
             }
             
             const duration = Math.random() * 3 + 2;
@@ -186,7 +187,7 @@ or check out our <a href="https://github.com/PLU-Programming-Party">GitHub organ
         }
     }
 
-    // Add confetti to random button clicks
+    // Add confetti to button clicks
     document.addEventListener('click', function(e) {
         // Check if clicked element is a button, link, or has button-like classes
         const isButton = e.target.tagName === 'BUTTON' || 
@@ -194,6 +195,7 @@ or check out our <a href="https://github.com/PLU-Programming-Party">GitHub organ
                         e.target.classList.contains('btn') ||
                         e.target.classList.contains('link-btn') ||
                         e.target.classList.contains('nav-link') ||
+                        e.target.classList.contains('nav-logo') ||
                         e.target.closest('button') ||
                         e.target.closest('a');
         
