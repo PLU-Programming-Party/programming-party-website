@@ -296,6 +296,67 @@ document.querySelectorAll('.project-card').forEach(card => {
             closeEasterEgg();
         }
     });
+
+    // Confetti System
+    function createConfetti() {
+        const colors = [
+            '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff',
+            '#ff8000', '#8000ff', '#ff0080', '#80ff00', '#0080ff', '#ff8080',
+            '#80ff80', '#8080ff', '#ffff80', '#ff80ff', '#80ffff', '#ff4040'
+        ];
+        
+        const shapes = ['circle', 'square', 'triangle'];
+        
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            
+            confetti.className = `confetti ${shape}`;
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            if (shape === 'triangle') {
+                confetti.style.borderBottomColor = confetti.style.backgroundColor;
+            }
+            
+            const duration = Math.random() * 3 + 2;
+            const delay = Math.random() * 0.5;
+            
+            confetti.style.animationDuration = duration + 's';
+            confetti.style.animationDelay = delay + 's';
+            confetti.style.animationName = 'confetti-fall';
+            confetti.style.animationTimingFunction = 'linear';
+            confetti.style.animationFillMode = 'forwards';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.parentNode.removeChild(confetti);
+                }
+            }, (duration + delay) * 1000);
+        }
+    }
+
+    // Add confetti to random button clicks
+    document.addEventListener('click', function(e) {
+        // Check if clicked element is a button, link, or has button-like classes
+        const isButton = e.target.tagName === 'BUTTON' || 
+                        e.target.tagName === 'A' || 
+                        e.target.classList.contains('btn') ||
+                        e.target.classList.contains('link-btn') ||
+                        e.target.classList.contains('nav-link') ||
+                        e.target.closest('button') ||
+                        e.target.closest('a');
+        
+        if (isButton) {
+            // 20-40% chance to trigger confetti
+            const chance = Math.random();
+            if (chance >= 0.6 && chance <= 1.0) {
+                createConfetti();
+            }
+        }
+    });
     </script>
 </body>
 </html>
