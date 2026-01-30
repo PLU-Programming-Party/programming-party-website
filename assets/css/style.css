@@ -1,13 +1,20 @@
 /* ===========================
-   Programming Party Website - CHRISTMAS EDITION 🎅
-   Apple-inspired clean design with FESTIVE CHEER!
+   Programming Party Website - RAINBOW EDITION 🌈
+   Apple-inspired clean design with colorful vibes!
    =========================== */
 
 :root {
-  /* Christmas Colors! */
-  --primary: #c41e3a;  /* Christmas Red */
-  --secondary: #165b33; /* Christmas Green */
-  --accent: #ffd700;   /* Gold */
+  /* Rainbow Colors! */
+  --rainbow-red: #ff6b6b;
+  --rainbow-orange: #ffa94d;
+  --rainbow-yellow: #ffd43b;
+  --rainbow-green: #69db7c;
+  --rainbow-blue: #4dabf7;
+  --rainbow-indigo: #7950f2;
+  --rainbow-violet: #da77f2;
+  --primary: #7950f2;
+  --secondary: #4dabf7;
+  --accent: #ffd43b;
   --dark: #1d1d1f;
   --light: #ffffff;
   --text: #1d1d1f;
@@ -18,8 +25,6 @@
   --gray-2: #e8e8ed;
   --gray-3: #d2d2d7;
   --gray-4: #86868b;
-  --snow: #f0f8ff;
-  --candy-cane: #ff1744;
 }
 
 * {
@@ -31,168 +36,18 @@
 html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
-  background: linear-gradient(to bottom, #1e3c72, #2a5298, #7e8ba3);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
 }
 
 body {
   line-height: 1.6;
-  background: linear-gradient(to bottom, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9), rgba(126, 139, 163, 0.9));
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
   min-height: 100vh;
   color: var(--text);
   font-weight: 400;
   position: relative;
   overflow-x: hidden;
-}
-
-/* ===== SNOWFALL EFFECT ===== */
-.snowfall {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.snowflake {
-  position: absolute;
-  top: -20px;
-  color: white;
-  user-select: none;
-  pointer-events: none;
-  animation: snowfall linear;
-}
-
-@keyframes snowfall {
-  from {
-    transform: translateY(-100px) rotate(0deg);
-  }
-  to {
-    transform: translateY(calc(100vh + 100px)) rotate(360deg);
-  }
-}
-
-/* ===== SANTA SLEIGH ANIMATION ===== */
-.santa-sleigh {
-  position: fixed;
-  top: 20%;
-  left: -300px;
-  width: 300px;
-  height: auto;
-  z-index: 100;
-  pointer-events: none;
-  animation: santa-fly 30s linear infinite;
-}
-
-.santa-sleigh img {
-  width: 100%;
-  height: auto;
-}
-
-@keyframes santa-fly {
-  0% {
-    left: -300px;
-    top: 20%;
-  }
-  50% {
-    left: calc(100% + 300px);
-    top: 10%;
-  }
-  100% {
-    left: calc(100% + 300px);
-    top: 20%;
-  }
-}
-
-/* ===== CHRISTMAS CHARACTERS ===== */
-.christmas-characters {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.character {
-  font-size: 3em;
-  animation: character-bounce 2s ease-in-out infinite;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: transform 0.3s ease;
-}
-
-.character:hover {
-  transform: scale(1.2) rotate(10deg);
-}
-
-.character.rudolph { animation-delay: 0s; }
-.character.grinch { animation-delay: 0.3s; }
-.character.snowman { animation-delay: 0.6s; }
-.character.elf { animation-delay: 0.9s; }
-.character.santa { animation-delay: 1.2s; }
-.character.mrs-claus { animation-delay: 1.5s; }
-
-@keyframes character-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-/* ===== REINDEER NAMES ===== */
-.reindeer-names {
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.9em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  z-index: 3;
-  white-space: nowrap;
-}
-
-.reindeer-names span {
-  display: inline-block;
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-.reindeer-names span:nth-child(odd) { animation-delay: 0s; }
-.reindeer-names span:nth-child(even) { animation-delay: 1.5s; }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-/* ===== CHRISTMAS LIGHTS ON NAVBAR ===== */
-.christmas-lights {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    #ff0000 0px, #ff0000 20px,
-    #00ff00 20px, #00ff00 40px,
-    #ffd700 40px, #ffd700 60px,
-    #0000ff 60px, #0000ff 80px
-  );
-  border-radius: 50%;
-  filter: blur(2px);
-  animation: lights-flicker 2s ease-in-out infinite;
-}
-
-@keyframes lights-flicker {
-  0%, 100% { opacity: 0.8; filter: blur(2px) brightness(1); }
-  50% { opacity: 1; filter: blur(1px) brightness(1.2); }
 }
 
 /* ===== Typography ===== */
@@ -202,7 +57,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5em;
   font-weight: 600;
   letter-spacing: -0.01em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -210,10 +64,16 @@ h1 {
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.015em;
-  background: linear-gradient(45deg, var(--primary), var(--accent));
+  background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-indigo), var(--rainbow-violet));
+  background-size: 200% auto;
+  animation: rainbow-text 3s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@keyframes rainbow-text {
+  to { background-position: 200% center; }
 }
 
 h2 {
@@ -227,7 +87,7 @@ h2 {
 h3 {
   font-size: 1.75em;
   font-weight: 600;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 p {
@@ -245,22 +105,27 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  color: var(--rainbow-violet);
 }
 
-/* ===== Festive Navbar ===== */
-.festive-navbar {
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(22, 91, 51, 0.9));
+/* ===== Rainbow Navbar ===== */
+.navbar, .festive-navbar {
+  background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-indigo), var(--rainbow-violet));
+  background-size: 200% auto;
+  animation: rainbow-bg 5s linear infinite;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 3px solid var(--accent);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
   color: var(--light);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes rainbow-bg {
+  to { background-position: 200% center; }
 }
 
 .nav-container {
@@ -281,7 +146,7 @@ a:hover {
 }
 
 .nav-logo:hover {
-  color: var(--accent);
+  color: var(--light);
   transform: scale(1.05);
 }
 
@@ -300,31 +165,9 @@ a:hover {
 }
 
 .nav-link:hover {
-  color: var(--accent);
+  color: var(--light);
   transform: translateY(-2px);
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-}
-
-/* ===== Jingle Bell Effect ===== */
-.jingle-bell {
-  position: absolute;
-  pointer-events: none;
-  animation: jingle 1s ease-out forwards;
-  z-index: 1000;
-}
-
-@keyframes jingle {
-  0% {
-    transform: rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: rotate(-30deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(30deg) scale(0) translateY(-30px);
-    opacity: 0;
-  }
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 /* ===== Main Content ===== */
@@ -346,7 +189,7 @@ main {
   text-align: center;
   margin: 0;
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 215, 0, 0.1));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(218, 119, 242, 0.1));
   border-radius: 20px 20px 0 0;
 }
 
@@ -356,17 +199,11 @@ main {
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-  0%, 100% { transform: scale(1); filter: brightness(1); }
-  50% { transform: scale(1.05); filter: brightness(1.2); }
 }
 
 .tagline {
   font-size: 1.5em;
-  color: var(--secondary);
+  color: var(--primary);
   font-weight: 400;
   max-width: 800px;
   margin: 0 auto;
@@ -393,7 +230,7 @@ section h2 {
 }
 
 section h2::after {
-  content: '🎄';
+  content: '🌈';
   position: absolute;
   left: 50%;
   bottom: -20px;
@@ -401,7 +238,7 @@ section h2::after {
   font-size: 1.5em;
 }
 
-/* ===== Project Grid with Festive Style ===== */
+/* ===== Project Grid ===== */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -410,18 +247,18 @@ section h2::after {
 }
 
 .project-card {
-  background: linear-gradient(135deg, var(--light), rgba(255, 215, 0, 0.1));
+  background: linear-gradient(135deg, var(--light), rgba(218, 119, 242, 0.1));
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--rainbow-violet);
   position: relative;
   overflow: hidden;
 }
 
 .project-card::before {
-  content: '🎁';
+  content: '✨';
   position: absolute;
   top: -10px;
   right: -10px;
@@ -432,8 +269,8 @@ section h2::after {
 
 .project-card:hover {
   transform: translateY(-8px) rotate(1deg);
-  box-shadow: 0 12px 40px rgba(196, 30, 58, 0.3);
-  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(121, 80, 242, 0.3);
+  border-color: var(--rainbow-blue);
 }
 
 .project-image {
@@ -443,7 +280,7 @@ section h2::after {
   border-radius: 12px;
   margin-bottom: 1.5rem;
   overflow: hidden;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--rainbow-blue);
 }
 
 .project-image img {
@@ -475,38 +312,42 @@ section h2::after {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--candy-cane));
+  background: linear-gradient(90deg, var(--rainbow-violet), var(--rainbow-indigo), var(--rainbow-blue));
+  background-size: 200% auto;
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(196, 30, 58, 0.4);
+  box-shadow: 0 6px 25px rgba(121, 80, 242, 0.4);
+  animation: rainbow-bg 2s linear infinite;
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, var(--secondary), #0f3d1f);
+  background: linear-gradient(90deg, var(--rainbow-green), var(--rainbow-blue));
+  background-size: 200% auto;
   color: white;
 }
 
 .btn-secondary:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(22, 91, 51, 0.4);
+  box-shadow: 0 6px 25px rgba(77, 171, 247, 0.4);
+  animation: rainbow-bg 2s linear infinite;
 }
 
 /* ===== About Section ===== */
 .about {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.95));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 243, 255, 0.95));
   padding: 3rem;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 3rem;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--rainbow-violet);
   position: relative;
 }
 
 .about::before {
-  content: '❄️';
+  content: '🎉';
   position: absolute;
   top: 20px;
   left: 20px;
@@ -515,7 +356,7 @@ section h2::after {
 }
 
 .about::after {
-  content: '⛄';
+  content: '💻';
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -531,12 +372,14 @@ section h2::after {
 
 /* ===== Join Section ===== */
 .join-us {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-indigo), var(--rainbow-violet));
+  background-size: 200% auto;
+  animation: rainbow-bg 5s linear infinite;
   color: var(--light);
   padding: 4rem 3rem;
   border-radius: 16px;
   text-align: center;
-  border: 3px solid var(--accent);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
@@ -549,7 +392,7 @@ section h2::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
   animation: rotate 20s linear infinite;
 }
 
@@ -565,7 +408,7 @@ section h2::after {
 }
 
 .join-us h2::after {
-  content: '🎅';
+  content: '🌈';
 }
 
 .join-us p {
@@ -576,23 +419,26 @@ section h2::after {
 }
 
 .join-us a {
-  color: var(--accent);
+  color: var(--light);
   font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-decoration: underline;
 }
 
 .join-us a:hover {
   color: var(--light);
 }
 
-/* ===== Festive Footer ===== */
-.festive-footer {
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(22, 91, 51, 0.9));
+/* ===== Rainbow Footer ===== */
+.footer, .festive-footer {
+  background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-blue), var(--rainbow-indigo), var(--rainbow-violet));
+  background-size: 200% auto;
+  animation: rainbow-bg 5s linear infinite;
   color: var(--light);
   padding: 3rem 2rem 4rem;
   margin-top: 0;
   text-align: center;
-  border-top: 3px solid var(--accent);
+  border-top: 3px solid rgba(255, 255, 255, 0.3);
   position: relative;
 }
 
@@ -604,41 +450,109 @@ section h2::after {
 }
 
 .footer a {
-  color: var(--accent);
+  color: var(--light);
   font-weight: 500;
+  text-decoration: underline;
 }
 
 .footer a:hover {
   color: var(--light);
 }
 
-.footer-decorations {
+/* ===== Easter Egg ===== */
+.easter-egg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.easter-egg.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.easter-egg-content {
+  background: linear-gradient(135deg, var(--light), rgba(218, 119, 242, 0.1));
+  border: 3px solid var(--rainbow-violet);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.close-easter-egg {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3em;
+  color: var(--light);
+  cursor: pointer;
+}
+
+.party-gif {
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+/* ===== Tags ===== */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background: linear-gradient(90deg, var(--rainbow-blue), var(--rainbow-violet));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+/* ===== Project Links ===== */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.link-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--gray-1);
+  color: var(--primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.project-year {
+  color: var(--gray-4);
+  font-size: 0.9em;
+}
+
+.view-all {
+  text-align: center;
   margin-top: 2rem;
-  font-size: 2em;
-  letter-spacing: 1rem;
-  animation: decoration-dance 5s ease-in-out infinite;
 }
 
-@keyframes decoration-dance {
-  0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.1) rotate(5deg); }
-  75% { transform: scale(1.1) rotate(-5deg); }
-}
-
-/* ===== Christmas Easter Egg ===== */
-.christmas-easter-egg {
-  background: linear-gradient(135deg, var(--light), rgba(255, 215, 0, 0.1));
-  border: 3px solid var(--primary);
-}
-
-.christmas-easter-egg h1 {
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ===== CONFETTI STYLES ===== */
+/* ===== Confetti ===== */
 .confetti {
   position: fixed;
   width: 10px;
@@ -647,25 +561,6 @@ section h2::after {
   pointer-events: none;
   z-index: 10000;
   will-change: transform;
-}
-
-.confetti.square {
-  border-radius: 2px;
-}
-
-.confetti.triangle {
-  width: 0;
-  height: 0;
-  border-radius: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 10px solid;
-}
-
-.confetti.snowflake {
-  background: transparent !important;
-  width: auto;
-  height: auto;
 }
 
 @keyframes confetti-fall {
@@ -681,19 +576,6 @@ section h2::after {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
-  .christmas-characters {
-    font-size: 0.8em;
-  }
-  
-  .reindeer-names {
-    font-size: 0.7em;
-    top: 70px;
-  }
-  
-  .santa-sleigh {
-    width: 150px;
-  }
-  
   .nav-container {
     flex-direction: column;
     gap: 1rem;
@@ -712,26 +594,23 @@ section h2::after {
   main {
     margin-bottom: 150px;
   }
-}
 
-/* Additional festive animations and effects continue... */
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .konami-hint {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
   user-select: none;
   pointer-events: none;
   transition: all 0.3s ease;
-  background: rgba(196, 30, 58, 0.2);
+  background: rgba(121, 80, 242, 0.3);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-}
-
-.konami-hint:hover {
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(196, 30, 58, 0.4);
 }
